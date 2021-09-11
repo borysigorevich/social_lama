@@ -9,7 +9,9 @@ const INITIAL_STATE = {
         profilePicture: 'person/10.jpeg',
         coverPicture: '',
         followers: [],
-        followings: []
+        followings: ['613693fd8ada5df6d35b5098', '6136940d8ada5df6d35b509c', '6138ebdfcb43c6245999ee88'],
+        city: 'Kiev',
+        from: 'Schors'
     },
     isFetching: false,
     error: false
