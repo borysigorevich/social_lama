@@ -50,7 +50,7 @@ const Register = () => {
                         <input placeholder={'Password Again'} ref={passwordAgain} required type="password"
                                className="loginInput"/>
                         <button className="loginButton" type={'submit'}>Sign up</button>
-                        <button className="loginRegisterButton">Log into Account</button>
+                        <button className="loginRegisterButton" onClick={() => history.push('/login')}>Log into Account</button>
                     </form>
                 </div>
             </div>

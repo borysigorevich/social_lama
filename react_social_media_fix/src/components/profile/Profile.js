@@ -12,9 +12,7 @@ const Profile = () => {
     const [user, setUser] = useState({})
     const {username} = useParams()
 
-
         useEffect(() => {
-            // console.log('are we here')
             const fetchUser = async () => {
                 const res = await axios.get(`/users?username=${username}`)
                 setUser(res.data)

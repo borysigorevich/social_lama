@@ -3,10 +3,12 @@ import './login.css'
 import {loginCall} from "../../apiCalls";
 import {AuthContext} from "../../context/AuthContext";
 import {CircularProgress} from "@material-ui/core";
+import {useHistory} from 'react-router'
 
 const Login = () => {
     const email = useRef()
     const password = useRef()
+    const history = useHistory()
     const {user, isFetching, error, dispatch} = useContext(AuthContext)
     const handleClick = (e) => {
         e.preventDefault()
@@ -28,9 +30,11 @@ const Login = () => {
                         <input ref={email} required placeholder={'Email'} type="email" className="loginInput"/>
                         <input ref={password} required minLength={5} placeholder={'Password'} type="password"
                                className="loginInput"/>
-                        <button className="loginButton" type={'submit'} disabled={isFetching}>{isFetching ? <CircularProgress size={25} color={'white'}/> : 'Log in'}</button>
+                        <button className="loginButton" type={'submit'} disabled={isFetching}>{isFetching ?
+                            <CircularProgress size={25} color={'white'}/> : 'Log in'}</button>
                         <span className={'loginForgot'}>Forgot Password?</span>
-                        <button className="loginRegisterButton">{isFetching ? <CircularProgress size={25} color={'white'}/> : 'Create a New Account'}</button>
+                        <button className="loginRegisterButton" onClick={() => history.push('/register')}>{isFetching ?
+                            <CircularProgress size={25} color={'white'}/> : 'Create a New Account'}</button>
                     </form>
                 </div>
             </div>

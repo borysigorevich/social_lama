@@ -14,10 +14,9 @@ const Rightbar = ({user}) => {
     const {user: currentUser, dispatch} = useContext(AuthContext)
     const [followed, setFollowed] = useState(false)
 
+
     useEffect(() => {
-        setFollowed(currentUser.followings.includes(user?._id))
-        console.log(currentUser.followings)
-        console.log(user._id)
+        setFollowed(currentUser.followings?.includes(user?._id))
     }, [currentUser, user._id])
 
     useEffect(() => {
@@ -29,7 +28,11 @@ const Rightbar = ({user}) => {
                 console.log(error)
             }
         }
-        getFriends()
+        if(user._id){
+            getFriends()
+        } else {
+        }
+
     }, [user._id])
 
     const handleClick = async () => {
@@ -56,7 +59,7 @@ const Rightbar = ({user}) => {
                     <b>Pola Foster</b> and <b>3 other friends</b> have a birthday today
                 </span>
             </div>
-            <img src={`${PF}ad.png`} alt="img" className={'rightbarAd'}/>
+            <img src={`${PF}add.png`} alt="img" className={'rightbarAd'}/>
             <h4 className="rightbarTitle">Online Friends</h4>
             <ul className="rightbarFriendList">
                 {Users.map(user => {
@@ -97,7 +100,7 @@ const Rightbar = ({user}) => {
                         <Link key={friend._id} to={'/profile/' + friend.username} style={{textDecoration: 'none'}}>
                             <div className="rightbarFollowing">
                                 <img className={'rightbarFollowingImg'}
-                                     src={friend.profilePicture ? PF + friend.profilePicture : `${PF}person/noAvatar`}
+                                     src={friend.profilePicture ? PF + friend.profilePicture : `${PF}person/noAvatar.png`}
                                      alt="img"/>
                                 <span className={'rightbarFollowingName'}>{friend.username}</span>
                             </div>

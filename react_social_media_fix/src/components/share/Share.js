@@ -21,12 +21,10 @@ const Share = () => {
             desc: desc.current.value
         }
         if (file) {
-            console.log(file)
             const data = new FormData()
             const fileName = Date.now() + file.name
             data.append('name', fileName)
             data.append('file', file)
-            console.log(data)
             newPost.img = fileName
             try {
                 await axios.post('/upload', data)
@@ -66,13 +64,7 @@ const Share = () => {
                             <span className={'shareOptionText'}>Photo or Video</span>
                             <input style={{display: 'none'}} type="file" id={'file'} accept={'.png, .jpeg, .jpg'}
                                    onChange={e => {
-                                       console.log(e.target.files)
                                        setFile(e.target.files[0])
-                                       const data = new FormData()
-                                       data.append('name', 'hello')
-                                       data.append('age', '22')
-                                       console.log(data)
-                                       console.log(data.get('age'))
                                    }}/>
                         </label>
                         <div className="shareOption">

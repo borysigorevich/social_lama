@@ -19,7 +19,6 @@ const Post = ({post}) => {
     }, [currentUser._id, post.likes])
 
     useEffect(() => {
-        // console.log('are we here')
         const fetchUser = async () => {
             const res = await axios.get(`/users?userId=${post.userId}`)
             setUser(res.data)

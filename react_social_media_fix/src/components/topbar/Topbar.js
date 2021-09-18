@@ -5,10 +5,12 @@ import PersonIcon from '@material-ui/icons/Person';
 import ChatIcon from '@material-ui/icons/Chat';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import {Link} from "react-router-dom";
+import {useHistory} from "react-router";
 import {AuthContext} from "../../context/AuthContext";
 
 const Topbar = () => {
     const {user} = useContext(AuthContext)
+    const history = useHistory()
     const PF = process.env.REACT_APP_PUBLIC_FOLDER
 
     return (
@@ -35,7 +37,7 @@ const Topbar = () => {
                         <span className="topbarIconBadge">1</span>
                     </div>
                     <div className="topbarIconItem">
-                        <ChatIcon/>
+                        <ChatIcon onClick={() => history.push('/messenger')}/>
                         <span className="topbarIconBadge">2</span>
                     </div>
                     <div className="topbarIconItem">
